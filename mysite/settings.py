@@ -121,3 +121,6 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
+
+LOGIN_URL = '/login/' # added for logging into the application
+LOGIN_REDIRECT_URL = '/' # added for redirecting
