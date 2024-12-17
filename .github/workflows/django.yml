@@ -30,4 +30,4 @@ jobs:
         python manage.py test
     - name: Code Style Check
       run: |
-        black --check blogging django_blog polling
+        black --check blogging mysite polling
