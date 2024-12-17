@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 from blogging.models import Post, Category
 
 import datetime
-from django.utils.timezone import utc
+# from django.utils.timezone import utc
 
 
 # Create your tests here.
