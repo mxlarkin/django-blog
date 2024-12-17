@@ -3,7 +3,8 @@ from django.contrib.auth.models import User
 from blogging.models import Post, Category
 
 import datetime
-from django.utils.timezone import utc
+
+# from django.utils.timezone import utc
 
 
 # Create your tests here.
@@ -39,7 +40,7 @@ class FrontEndTestCase(TestCase):
     ]
 
     def setUp(self):
-        self.now = datetime.datetime.utcnow().replace(tzinfo=utc)
+        self.now = datetime.datetime.now(datetime.timezone.utc)  # .replace(tzinfo=utc)
         self.timedelta = datetime.timedelta(15)
         author = User.objects.get(pk=1)
         for count in range(1, 11):
@@ -54,7 +55,7 @@ class FrontEndTestCase(TestCase):
         resp = self.client.get("/")
         # the content of the rendered response is always a bytestring
         resp_text = resp.content.decode(resp.charset)
-        self.assertTrue("My Cool Blog Title" in resp_text)
+        self.assertTrue("Coolest Posts" in resp_text)
         for count in range(1, 11):
             title = "Post %d Title" % count
             if count < 6:
