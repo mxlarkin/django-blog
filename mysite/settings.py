@@ -40,6 +40,9 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "polling",
     "blogging",
+    "django.contrib.sites",  # new
+    "allauth",  # new
+    "allauth.account",  # new
 ]
 
 MIDDLEWARE = [
@@ -49,6 +52,7 @@ MIDDLEWARE = [
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
+    "allauth.account.middleware.AccountMiddleware",  # new
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
 
@@ -121,6 +125,16 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = "/static/"
+
+# NEW django-allauth configurations
+AUTHENTICATION_BACKENDS = [
+    "django.contrib.auth.backends.ModelBackend",  # new
+    "allauth.account.auth_backends.AuthenticationBackend",  # new
+]
+
+ACCOUNT_EMAIL_VERIFICATION = "none"  # new
+
+SITE_ID = 1  # new
 
 LOGIN_URL = "/login/"  # added for logging into the application
 LOGIN_REDIRECT_URL = "/"  # added for redirecting
